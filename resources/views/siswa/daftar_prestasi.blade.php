@@ -217,11 +217,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-header">
                 <h3 class="card-title">Daftar Prestasi</h3>
                 <div class="float-right">
-                    <a href="{{ route('kelas') }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+                    <form action="{{ route('daftar_nama') }}" method="GET">
+                        <input type="text" name="tingkat" value="{{ $siswa->tingkat }}" hidden>
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                    </form>
                 </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+                @if (session()->has('success'))
+                <div class="alert alert-info alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-info"></i> Alert!</h5>
+                    {{ session()->get('success') }}
+                </div>
+                @endif
+
                 <div class="h6">
                    <b>Nama :</b>  {{ $siswa->nama }}
                 </div>
@@ -232,6 +243,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                    <th>No</th>
                   <th>Jenis</th>
                   <th>Tingkat</th>
                   <th>Juara</th>
@@ -240,11 +252,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <th>Nomor Piagam</th>
                   <th>Tanggal</th>
                   <th>Tempat Pelaksanaan</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
                     @foreach ($prestasi as $item)
                     <tr>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $item->jenis }}</td>
                         <td>{{ $item->tingkat }}</td>
                         <td>{{ $item->juara }}</td>
@@ -253,6 +270,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <td>{{ $item->nomor_piagam }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->tanggal)->isoFormat('DD MMMM Y') }}</td>
                         <td>{{ $item->tempat_pelaksanaan }}</td>
+                        <td>
+                          <a href="{{ route('edit_prestasi', [$item->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+                          <a href="{{ route('hapus_prestasi', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini ?')"><i class="fas fa-trash"></i></a>
+                        </td>
                     </tr>
                     @endforeach
 

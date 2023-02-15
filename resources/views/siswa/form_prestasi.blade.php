@@ -217,7 +217,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-header">
                 <h3 class="card-title">Formulir Prestasi Siswa</h3>
                 <div class="float-right">
-                    <a href="{{ route('kelas') }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+                    <a href="{{ route('daftar_prestasi', [$siswa->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
                 </div>
             </div>
             <!-- /.card-header -->
@@ -317,12 +317,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <input type="text" class="form-control" name="tempat_pelaksanaan" placeholder="Exp: Surabaya">
                           </div>
                         </div>
+
+                    </div>
+                    <hr>
+                    <h6>Upload File Lampiran</h6>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">Piagam</span>
+                                <input type="file" class="form-control" name="piagam[]" multiple>
+                                </div>
+                                <small>Format: .pdf</small>
+                            </div>
+                        </div>
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                 <span class="input-group-text">Dokumentasi</span>
-                                </div>
                                 <input type="file" class="form-control" name="file[]" multiple>
+                                </div>
+                                <small>Format: .jpg, .jpeg, .png</small>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">Video (Opsional)</span>
+                                <input type="file" class="form-control" name="videos[]" multiple>
+                                </div>
+                                <small>Format: .mp4</small>
                             </div>
                         </div>
                     </div>
@@ -367,26 +391,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- dropzonejs -->
 {{-- <script src="{{ asset('admin/plugins/dropzone/min/dropzone.min.js') }}"></script> --}}
-<script type="text/javascript">
-    Dropzone.options.dropzone =
-    {
-        maxFilesize: 10,
-        renameFile: function (file) {
-            var dt = new Date();
-            var time = dt.getTime();
-            return time + file.name;
-        },
-        acceptedFiles: ".jpeg,.jpg,.png,.gif",
-        addRemoveLinks: true,
-        timeout: 60000,
-        success: function (file, response) {
-            console.log(response);
-        },
-        error: function (file, response) {
-            return false;
-        }
-    };
-</script>
+
 
 </body>
 </html>
