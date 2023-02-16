@@ -13,10 +13,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- dropzonejs -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
-
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
 </head>
@@ -26,10 +26,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="{{ route('kelas') }}" class="navbar-brand">
+      <a href="{{ route('admin.dashboard') }}" class="navbar-brand">
         {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
         <span class="brand-text font-weight-bold">SITARA</span>
       </a>
+      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link nav-link-active">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.kelas') }}" class="nav-link">Prestasi</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.lampiran_prestasi') }}" class="nav-link">Lampiran</a>
+          </li>
+          {{-- <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="#" class="dropdown-item">Some action </a></li>
+              <li><a href="#" class="dropdown-item">Some other action</a></li>
+
+              <li class="dropdown-divider"></li>
+
+              <!-- Level two dropdown-->
+              <li class="dropdown-submenu dropdown-hover">
+                <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+                <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                  <li>
+                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                  </li>
+
+                  <!-- Level three dropdown-->
+                  <li class="dropdown-submenu">
+                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                      <li><a href="#" class="dropdown-item">3rd level</a></li>
+                      <li><a href="#" class="dropdown-item">3rd level</a></li>
+                    </ul>
+                  </li>
+                  <!-- End Level three -->
+
+                  <li><a href="#" class="dropdown-item">level 2</a></li>
+                  <li><a href="#" class="dropdown-item">level 2</a></li>
+                </ul>
+              </li>
+              <!-- End Level two -->
+            </ul>
+          </li> --}}
+        </ul>
 
       {{-- <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -185,7 +231,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
         </li>
       </ul> --}}
-      @if (auth()->user()->role_id == 1)
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -195,7 +240,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
       </ul>
-      @endif
     </div>
   </nav>
   <!-- /.navbar -->
@@ -226,160 +270,78 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Formulir Prestasi Siswa</h3>
+                <h3 class="card-title">Daftar Prestasi</h3>
                 <div class="float-right">
-                    <a href="{{ route('daftar_prestasi', [$siswa->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+                    <form action="{{ route('admin.daftar_nama') }}" method="GET">
+                        <input type="text" name="tingkat" value="{{ $siswa->tingkat }}" hidden>
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                    </form>
                 </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form action="{{ route('upload_prestasi') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Nama</span>
-                        </div>
-                        <input type="text" name="siswa_id" value="{{ $siswa->id }}" hidden>
-                        <input type="text" class="form-control" value="{{ $siswa->nama }}" readonly>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Kelas</span>
-                        </div>
-                        <input type="text" class="form-control" value="{{ $siswa->kelas }}" readonly >
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Prestasi</span>
-                                </div>
-                                <select name="jenis" id="jenis" class="form-control" required>
-                                    <option value="Akademik">Akademik</option>
-                                    <option value="Non-Akademik">Non-Akademik</option>
-                                </select>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Tingkat</span>
-                                </div>
-                                <select name="tingkat" id="tingkat" class="form-control" required>
-                                    <option value="1">Nasional</option>
-                                    <option value="2">Provinsi</option>
-                                    <option value="3">Keresidenan</option>
-                                    <option value="4">Kabupaten</option>
-                                </select>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Wilayah</span>
-                                </div>
-                                <input type="text" class="form-control" name="wilayah" placeholder="Exp: Indonesia" required>
-                          </div>
-                        </div>
+                @if (session()->has('success'))
+                <div class="alert alert-info alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-info"></i> Alert!</h5>
+                    {{ session()->get('success') }}
+                </div>
+                @endif
 
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Juara</span>
-                                </div>
-                                <select name="juara" id="juara" class="form-control" required>
-                                    <option value="Juara 1">Juara 1</option>
-                                    <option value="Juara 2">Juara 2</option>
-                                    <option value="Juara 3">Juara 3</option>
-                                    <option value="Harapan 1">Harapan 1</option>
-                                    <option value="Harapan 2">Harapan 2</option>
-                                    <option value="Harapan 3">Harapan 3</option>
-                                </select>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Kejuaraan</span>
-                                </div>
-                                <input type="text" class="form-control" name="nama_kejuaraan" placeholder="Exp: Olimpiade Fisika" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Penyelenggara</span>
-                                </div>
-                                <input type="text" class="form-control" name="penyelenggara" placeholder="Exp: Pemprov. Jatim" required>
-                          </div>
-                        </div>
+                <div class="h6">
+                   <b>Nama :</b>  {{ $siswa->nama }}
+                </div>
+                <div class="h6">
+                    <b>Kelas :</b>  {{ $siswa->kelas }}
+                 </div>
+                 <a href="{{ route('admin.form_prestasi', [$siswa->id]) }}" class="btn btn-sm btn-primary mb-3"><i class="fas fa-plus"></i> Tambah Prestasi</a>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>No</th>
+                  <th>Jenis</th>
+                  <th>Tingkat</th>
+                  <th>Juara</th>
+                  <th>Nama Kejuaraan</th>
+                  <th>Penyelanggara</th>
+                  <th>Nomor Piagam</th>
+                  <th>Tanggal</th>
+                  <th>Tempat Pelaksanaan</th>
+                  <th>Aksi</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($prestasi as $item)
+                    <tr>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $item->jenis }}</td>
+                        @if ($item->tingkat == 1)
+                        <td>Nasional {{ $item->wilayah }}</td>
+                        @elseif ($item->tingkat == 2)
+                        <td>Provinsi {{ $item->wilayah }}</td>
+                        @elseif ($item->tingkat == 3)
+                        <td>Keresidenan {{ $item->wilayah }}</td>
+                        @elseif ($item->tingkat == 4)
+                        <td>Kabupaten {{ $item->wilayah }}</td>
+                        @endif
+                        <td>{{ $item->juara }}</td>
+                        <td>{{ $item->nama_kejuaraan }}</td>
+                        <td>{{ $item->penyelenggara }}</td>
+                        <td>{{ $item->nomor_piagam }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->tanggal)->isoFormat('DD MMMM Y') }}</td>
+                        <td>{{ $item->tempat_pelaksanaan }}</td>
+                        <td>
+                            <a href="{{ route('admin.lihat_prestasi', [$item->id]) }}" class="btn btn-sm btn-success"><i  class="fas fa-eye"></i></a>
+                          <a href="{{ route('admin.edit_prestasi', [$item->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>
+                          <a href="{{ route('admin.hapus_prestasi', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus data ini ?')"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    @endforeach
 
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">No. Piagam</span>
-                                </div>
-                                <input type="text" class="form-control" name="nomor_piagam" placeholder="Exp: 22/XI/2022" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Tanggal Piagam</span>
-                                </div>
-                                <input type="date" class="form-control" name="tanggal" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Tempat Pelaksaan</span>
-                                </div>
-                                <input type="text" class="form-control" name="tempat_pelaksanaan" placeholder="Exp: Surabaya" required>
-                          </div>
-                        </div>
-
-                    </div>
-                    <hr>
-                    <h6>Upload File Lampiran</h6>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Piagam</span>
-                                <input type="file" class="form-control" name="piagam[]" multiple>
-                                </div>
-                                <small>Format: .pdf</small>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Dokumentasi</span>
-                                <input type="file" class="form-control" name="file[]" multiple>
-                                </div>
-                                <small>Format: .jpg, .jpeg, .png</small>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Video (Opsional)</span>
-                                <input type="file" class="form-control" name="videos[]" multiple>
-                                </div>
-                                <small>Format: .mp4</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
+              </table>
             </div>
             <!-- /.card-body -->
           </div>
@@ -415,9 +377,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- dropzonejs -->
-{{-- <script src="{{ asset('admin/plugins/dropzone/min/dropzone.min.js') }}"></script> --}}
-
-
+<!-- DataTables  & Plugins -->
+<script src=" {{ asset('admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }} "></script>
+<script src=" {{ asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/jszip/jszip.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src=" {{ asset('admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src=" {{ asset('admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('admin/dist/js/adminlte.min.js') }} "></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "excel", "print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": false,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 </body>
 </html>

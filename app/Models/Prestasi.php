@@ -10,7 +10,7 @@ class Prestasi extends Model
     use HasFactory;
 
     protected $fillable = [
-        'siswa_id','jenis','tingkat','juara','nama_kejuaraan','penyelenggara','nomor_piagam',
+        'siswa_id','jenis','tingkat','wilayah','juara','nama_kejuaraan','penyelenggara','nomor_piagam',
         'tanggal','tempat_pelaksanaan',
     ];
 }

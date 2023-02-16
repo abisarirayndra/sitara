@@ -26,12 +26,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="{{ route('kelas') }}" class="navbar-brand">
-        {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+      <a href="{{ route('admin.dashboard') }}" class="navbar-brand">
+        {{-- <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
         <span class="brand-text font-weight-bold">SITARA</span>
       </a>
 
-      {{-- <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -39,12 +39,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index3.html" class="nav-link">Home</a>
+            <a href="{{ route('admin.dashboard') }}" class="nav-link nav-link-active">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="{{ route('admin.kelas') }}" class="nav-link">Prestasi</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
+            <a href="{{ route('admin.lampiran_prestasi') }}" class="nav-link">Lampiran</a>
+          </li>
+          {{-- <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="#" class="dropdown-item">Some action </a></li>
@@ -76,10 +79,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
               <!-- End Level two -->
             </ul>
-          </li>
+          </li> --}}
         </ul>
 
-        <!-- SEARCH FORM -->
+        {{-- <!-- SEARCH FORM -->
         <form class="form-inline ml-0 ml-md-3">
           <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -89,103 +92,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </button>
             </div>
           </div>
-        </form>
+        </form> --}}
       </div>
 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fas fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
-      </ul> --}}
-    
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{ $user }}</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{{ route('logout') }}" class="dropdown-item">Logout </a></li>
+            </ul>
+          </li>
+      </ul>
     </div>
   </nav>
   <!-- /.navbar -->
@@ -213,46 +132,129 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      <div class="container">
-        <div class="card">
-            <div class="card-header">
-                @if ($tingkat == 1)
-                    <h3 class="card-title">Daftar Nama Kelas X</h3>
-                @elseif ($tingkat == 2)
-                    <h3 class="card-title">Daftar Nama Kelas XI</h3>
-                @elseif ($tingkat == 3)
-                    <h3 class="card-title">Daftar Nama Kelas XI</h3>
-                @endif
-                <div class="float-right">
-                    <a href="{{ route('kelas') }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Daftar Prestasi</h3>
+                    {{-- <div class="float-right">
+                        <form action="{{ route('daftar_nama') }}" method="GET">
+                            <input type="text" name="tingkat" value="{{ $siswa->tingkat }}" hidden>
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                        </form>
+                    </div> --}}
                 </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example2" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>NAMA</th>
-                  <th>KELAS</th>
-                  <th>AKSI</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @foreach ($siswa as $item)
+                <!-- /.card-header -->
+                <div class="card-body">
+                    @if (session()->has('success'))
+                    <div class="alert alert-info alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-info"></i> Alert!</h5>
+                        {{ session()->get('success') }}
+                    </div>
+                    @endif
+
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
                     <tr>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->kelas }}</td>
-                        <td><a href="{{ route('daftar_prestasi', [$item->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i> Pilih</a></td>
+                        <th>No</th>
+                      <th>Jenis</th>
+                      <th>Tingkat</th>
+                      <th>Juara</th>
+                      <th>Nama Kejuaraan</th>
+                      <th>Penyelanggara</th>
+                      <th>Nomor Piagam</th>
+                      <th>Tanggal</th>
+                      <th>Tempat Pelaksanaan</th>
                     </tr>
-                    @endforeach
+                    </thead>
+                    <tbody>
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach ($prestasi as $item)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $item->jenis }}</td>
+                            @if ($item->tingkat == 1)
+                            <td>Nasional {{ $item->wilayah }}</td>
+                            @elseif ($item->tingkat == 2)
+                            <td>Provinsi {{ $item->wilayah }}</td>
+                            @elseif ($item->tingkat == 3)
+                            <td>Keresidenan {{ $item->wilayah }}</td>
+                            @elseif ($item->tingkat == 4)
+                            <td>Kabupaten {{ $item->wilayah }}</td>
+                            @else
+                            <td> - </td>
+                            @endif
+                            <td>{{ $item->juara }}</td>
+                            <td>{{ $item->nama_kejuaraan }}</td>
+                            <td>{{ $item->penyelenggara }}</td>
+                            <td>{{ $item->nomor_piagam }}</td>
+                            <td>{{ \Carbon\Carbon::parse($item->tanggal)->isoFormat('DD MMMM Y') }}</td>
+                            <td>{{ $item->tempat_pelaksanaan }}</td>
 
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
+                        </tr>
+                        @endforeach
 
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+
+            <!-- /.row -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Lampiran File Prestasi</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                        <div class="filter-container p-0 row">
+                            @foreach ($piagam as $item)
+                            <div class="filtr-item col-lg-6  data-category="1">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                    <div class="text-center">
+                                        <p>{{ $item->file }}</p>
+                                        <p>{{ $item->jenis }}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @foreach ($foto as $item)
+                            <div class="filtr-item col-lg-6 data-category="2">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto" ></iframe>
+                                    <div class="text-center">
+                                        <p>{{ $item->file }}</p>
+                                        <p>{{ $item->jenis }}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            @foreach ($video as $item)
+                            <div class="filtr-item col-lg-6 data-category="3">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                    <div class="text-center">
+                                        <p>{{ $item->file }}</p>
+                                        <p>{{ $item->jenis }}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            @endforeach
+
+                        </div>
+
+                </div>
+                <!-- /.card-body -->
+              </div>
+        </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
@@ -282,6 +284,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('admin/dist/js/adminlte.min.js') }} "></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('admin/dist/js/demo.js') }}"></script>
 <!-- DataTables  & Plugins -->
 <script src=" {{ asset('admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src=" {{ asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }} "></script>
@@ -303,7 +309,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     $(function () {
       $("#example1").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["copy", "excel",   {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'A4'
+            }, "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
         "paging": true,

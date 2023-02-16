@@ -255,9 +255,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="input-group-prepend">
                                 <span class="input-group-text">Tingkat</span>
                                 </div>
-                                <input type="text" class="form-control" name="tingkat" placeholder="Exp: Keresidenan Besuki" value="{{ $prestasi->tingkat }}">
+                                <select name="tingkat" id="tingkat" class="form-control" required>
+                                    <option value="1" @if($prestasi->tingkat == "1") {{'selected="selected"'}} @endif>Nasional</option>
+                                    <option value="2" @if($prestasi->tingkat == "2") {{'selected="selected"'}} @endif>Provinsi</option>
+                                    <option value="3" @if($prestasi->tingkat == "3") {{'selected="selected"'}} @endif>Keresidenan</option>
+                                    <option value="4" @if($prestasi->tingkat == "4") {{'selected="selected"'}} @endif>Kabupaten</option>
+                                </select>
                           </div>
                         </div>
+                        <div class="col-lg-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text">Wilayah</span>
+                                </div>
+                                <input type="text" class="form-control" name="wilayah" placeholder="Exp: Indonesia" value="{{ $prestasi->wilayah }}">
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -273,8 +289,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </select>
                           </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -291,6 +305,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <input type="text" class="form-control" name="penyelenggara" value="{{ $prestasi->penyelenggara }}" placeholder="Exp: Pemprov. Jatim">
                           </div>
                         </div>
+
+                    </div>
+                    <div class="row">
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -299,8 +316,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <input type="text" class="form-control" name="nomor_piagam" value="{{ $prestasi->nomor_piagam }}" placeholder="Exp: 22/XI/2022">
                           </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

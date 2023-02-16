@@ -26,11 +26,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="{{ route('kelas') }}" class="navbar-brand">
+      <a href="{{ route('admin.dashboard') }}" class="navbar-brand">
         {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
         <span class="brand-text font-weight-bold">SITARA</span>
       </a>
+      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link nav-link-active">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.kelas') }}" class="nav-link">Prestasi</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.lampiran_prestasi') }}" class="nav-link">Lampiran</a>
+          </li>
+          {{-- <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="#" class="dropdown-item">Some action </a></li>
+              <li><a href="#" class="dropdown-item">Some other action</a></li>
 
+              <li class="dropdown-divider"></li>
+
+              <!-- Level two dropdown-->
+              <li class="dropdown-submenu dropdown-hover">
+                <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+                <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                  <li>
+                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                  </li>
+
+                  <!-- Level three dropdown-->
+                  <li class="dropdown-submenu">
+                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                      <li><a href="#" class="dropdown-item">3rd level</a></li>
+                      <li><a href="#" class="dropdown-item">3rd level</a></li>
+                    </ul>
+                  </li>
+                  <!-- End Level three -->
+
+                  <li><a href="#" class="dropdown-item">level 2</a></li>
+                  <li><a href="#" class="dropdown-item">level 2</a></li>
+                </ul>
+              </li>
+              <!-- End Level two -->
+            </ul>
+          </li> --}}
+        </ul>
       {{-- <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -185,7 +230,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
         </li>
       </ul> --}}
-      @if (auth()->user()->role_id == 1)
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -195,7 +239,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
       </ul>
-      @endif
     </div>
   </nav>
   <!-- /.navbar -->
@@ -228,12 +271,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="card-header">
                 <h3 class="card-title">Formulir Prestasi Siswa</h3>
                 <div class="float-right">
-                    <a href="{{ route('daftar_prestasi', [$siswa->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
+                    <a href="{{ route('admin.daftar_prestasi', [$siswa->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
                 </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form action="{{ route('upload_prestasi') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+                <form action="{{ route('admin.upload_prestasi') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">

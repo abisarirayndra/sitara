@@ -13,9 +13,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- dropzonejs -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
+  {{-- <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="../plugins/ekko-lightbox/ekko-lightbox.css"> --}}
 
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
@@ -26,10 +25,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
     <div class="container">
-      <a href="{{ route('kelas') }}" class="navbar-brand">
+      <a href="{{ route('admin.dashboard') }}" class="navbar-brand">
         {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
         <span class="brand-text font-weight-bold">SITARA</span>
       </a>
+      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link nav-link-active">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.kelas') }}" class="nav-link">Prestasi</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.kelas') }}" class="nav-link">Lampiran</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.lampiran_prestasi') }}" class="nav-link">Lampiran</a>
+          </li>
+          {{-- <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="#" class="dropdown-item">Some action </a></li>
+              <li><a href="#" class="dropdown-item">Some other action</a></li>
+
+              <li class="dropdown-divider"></li>
+
+              <!-- Level two dropdown-->
+              <li class="dropdown-submenu dropdown-hover">
+                <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+                <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                  <li>
+                    <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                  </li>
+
+                  <!-- Level three dropdown-->
+                  <li class="dropdown-submenu">
+                    <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                    <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                      <li><a href="#" class="dropdown-item">3rd level</a></li>
+                      <li><a href="#" class="dropdown-item">3rd level</a></li>
+                    </ul>
+                  </li>
+                  <!-- End Level three -->
+
+                  <li><a href="#" class="dropdown-item">level 2</a></li>
+                  <li><a href="#" class="dropdown-item">level 2</a></li>
+                </ul>
+              </li>
+              <!-- End Level two -->
+            </ul>
+          </li> --}}
+        </ul>
 
       {{-- <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -185,7 +233,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </a>
         </li>
       </ul> --}}
-      @if (auth()->user()->role_id == 1)
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -195,7 +242,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
       </ul>
-      @endif
     </div>
   </nav>
   <!-- /.navbar -->
@@ -226,160 +272,70 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Formulir Prestasi Siswa</h3>
-                <div class="float-right">
-                    <a href="{{ route('daftar_prestasi', [$siswa->id]) }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
-                </div>
+                <h3 class="card-title">Lampiran File Prestasi</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form action="{{ route('upload_prestasi') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Nama</span>
-                        </div>
-                        <input type="text" name="siswa_id" value="{{ $siswa->id }}" hidden>
-                        <input type="text" class="form-control" value="{{ $siswa->nama }}" readonly>
+                <div>
+                    <div class="mb-2">
+                      <a class="btn btn-secondary" href="{{ route('admin.download_files_zip') }}" > Download Lampiran (.zip) </a>
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">Kelas</span>
-                        </div>
-                        <input type="text" class="form-control" value="{{ $siswa->kelas }}" readonly >
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Prestasi</span>
-                                </div>
-                                <select name="jenis" id="jenis" class="form-control" required>
-                                    <option value="Akademik">Akademik</option>
-                                    <option value="Non-Akademik">Non-Akademik</option>
-                                </select>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Tingkat</span>
-                                </div>
-                                <select name="tingkat" id="tingkat" class="form-control" required>
-                                    <option value="1">Nasional</option>
-                                    <option value="2">Provinsi</option>
-                                    <option value="3">Keresidenan</option>
-                                    <option value="4">Kabupaten</option>
-                                </select>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Wilayah</span>
-                                </div>
-                                <input type="text" class="form-control" name="wilayah" placeholder="Exp: Indonesia" required>
-                          </div>
-                        </div>
+                </div>
+                <div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Juara</span>
+                </div>
+                    <div class="filter-container p-0 row">
+                        @foreach ($piagam as $item)
+                        <div class="filtr-item col-lg-6  data-category="1">
+                            <div class="card">
+                              <div class="card-body">
+                                <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <div class="text-center">
+                                    <p>{{ $item->file }}</p>
+                                    <p>{{ $item->jenis }}</p>
                                 </div>
-                                <select name="juara" id="juara" class="form-control" required>
-                                    <option value="Juara 1">Juara 1</option>
-                                    <option value="Juara 2">Juara 2</option>
-                                    <option value="Juara 3">Juara 3</option>
-                                    <option value="Harapan 1">Harapan 1</option>
-                                    <option value="Harapan 2">Harapan 2</option>
-                                    <option value="Harapan 3">Harapan 3</option>
-                                </select>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Kejuaraan</span>
+                                <div class="text-center">
+                                    <a href="{{ route('hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
                                 </div>
-                                <input type="text" class="form-control" name="nama_kejuaraan" placeholder="Exp: Olimpiade Fisika" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Penyelenggara</span>
-                                </div>
-                                <input type="text" class="form-control" name="penyelenggara" placeholder="Exp: Pemprov. Jatim" required>
-                          </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">No. Piagam</span>
-                                </div>
-                                <input type="text" class="form-control" name="nomor_piagam" placeholder="Exp: 22/XI/2022" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Tanggal Piagam</span>
-                                </div>
-                                <input type="date" class="form-control" name="tanggal" required>
-                          </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Tempat Pelaksaan</span>
-                                </div>
-                                <input type="text" class="form-control" name="tempat_pelaksanaan" placeholder="Exp: Surabaya" required>
-                          </div>
-                        </div>
-
-                    </div>
-                    <hr>
-                    <h6>Upload File Lampiran</h6>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Piagam</span>
-                                <input type="file" class="form-control" name="piagam[]" multiple>
-                                </div>
-                                <small>Format: .pdf</small>
+                              </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Dokumentasi</span>
-                                <input type="file" class="form-control" name="file[]" multiple>
+                        @endforeach
+                        @foreach ($foto as $item)
+                        <div class="filtr-item col-lg-6 data-category="2">
+                            <div class="card">
+                              <div class="card-body">
+                                <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto" ></iframe>
+                                <div class="text-center">
+                                    <p>{{ $item->file }}</p>
+                                    <p>{{ $item->jenis }}</p>
                                 </div>
-                                <small>Format: .jpg, .jpeg, .png</small>
+                                <div class="text-center">
+                                    <a href="{{ route('hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
+                                </div>
+                              </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text">Video (Opsional)</span>
-                                <input type="file" class="form-control" name="videos[]" multiple>
+                        @endforeach
+                        @foreach ($video as $item)
+                        <div class="filtr-item col-lg-6 data-category="3">
+                            <div class="card">
+                              <div class="card-body">
+                                <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <div class="text-center">
+                                    <p>{{ $item->file }}</p>
+                                    <p>{{ $item->jenis }}</p>
                                 </div>
-                                <small>Format: .mp4</small>
+                                <div class="text-center">
+                                    <a href="{{ route('admin.hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
+                                </div>
+                              </div>
                             </div>
                         </div>
+                        @endforeach
+
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
+
             </div>
             <!-- /.card-body -->
           </div>
@@ -415,9 +371,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- dropzonejs -->
-{{-- <script src="{{ asset('admin/plugins/dropzone/min/dropzone.min.js') }}"></script> --}}
-
+<!-- Filterizr-->
+<script src="../plugins/filterizr/jquery.filterizr.min.js"></script>
 
 </body>
 </html>

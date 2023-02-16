@@ -263,7 +263,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->jenis }}</td>
-                        <td>{{ $item->tingkat }}</td>
+                        @if ($item->tingkat == 1)
+                        <td>Nasional {{ $item->wilayah }}</td>
+                        @elseif ($item->tingkat == 2)
+                        <td>Provinsi {{ $item->wilayah }}</td>
+                        @elseif ($item->tingkat == 3)
+                        <td>Keresidenan {{ $item->wilayah }}</td>
+                        @elseif ($item->tingkat == 4)
+                        <td>Kabupaten {{ $item->wilayah }}</td>
+                        @endif
                         <td>{{ $item->juara }}</td>
                         <td>{{ $item->nama_kejuaraan }}</td>
                         <td>{{ $item->penyelenggara }}</td>
