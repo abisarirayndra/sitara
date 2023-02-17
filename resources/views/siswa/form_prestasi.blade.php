@@ -331,7 +331,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                <span class="input-group-text">Tempat Pelaksaan</span>
+                                <span class="input-group-text">Tempat Pelaksanaan</span>
                                 </div>
                                 <input type="text" class="form-control" name="tempat_pelaksanaan" placeholder="Exp: Surabaya" required>
                           </div>
