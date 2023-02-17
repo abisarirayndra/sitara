@@ -117,7 +117,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container">
         <div class="row mb-2">
             <div class="col-lg-1">
-                <img src="{{ asset('logo/logo.png') }}" alt="Logo Smada" width="80%">
+                <img src="{{ asset('logo/logo.png') }}" alt="Logo Smada" width="80">
             </div>
           <div class="col-lg-10">
             <h1 class="m-0"> Sistem Informasi Prestasi <br> SMAN 2 TARUNA BHAYANGKARA <small>v1.0</small></h1>
