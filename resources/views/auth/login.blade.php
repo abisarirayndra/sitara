@@ -28,7 +28,7 @@
                 {{-- <img src="{{asset('icons/car.png')}}" alt="AdminLTE Logo" class="brand-image"
                     width="125px" height="auto" style="opacity: .8;"> --}}
                     <br>
-                    <b style="font-size:23px;">SITARA</b>
+                    <b style="font-size:23px;">SiTara</b>
             </div>
         <div class="card card-outline card-primary">
 
@@ -81,6 +81,8 @@
                 <p class="mb-1">
                     <a href="{{ route('register') }}">Register Account</a>
                 </p>
+                <a href="{{ route('kelas') }}">Keluar</a>
+
                 {{-- <p class="mb-0">
                     <a href="{{route('register')}}" class="text-center">Register Buswangi</a>
                 </p> --}}

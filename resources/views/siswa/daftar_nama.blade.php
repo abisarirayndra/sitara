@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SITARA</title>
+  <title>SiTara</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container">
       <a href="{{ route('kelas') }}" class="navbar-brand">
         {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-        <span class="brand-text font-weight-bold">SITARA</span>
+        <span class="brand-text font-weight-bold">SiTara</span>
       </a>
 
       {{-- <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -196,8 +196,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content-header">
       <div class="container">
         <div class="row mb-2">
-          <div class="col-sm-12">
-            <h1 class="m-0"> Sistem Pencatatan Prestasi <br> SMAN 2 TARUNA BHAYANGKARA <small>v1.0</small></h1>
+            <div class="col-lg-1">
+                <img src="{{ asset('logo/logo.png') }}" alt="Logo Smada" width="80%">
+            </div>
+          <div class="col-lg-10">
+            <h1 class="m-0"> Sistem Informasi Prestasi <br> SMAN 2 TARUNA BHAYANGKARA <small>v1.0</small></h1>
           </div><!-- /.col -->
           {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -268,7 +271,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2021 Yayan Ferdiyan, M.Pd. </strong> All rights reserved.
+    <strong>Copyright &copy; 2022 Yayan Ferdiyan, M.Pd. </strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

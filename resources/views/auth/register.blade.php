@@ -25,7 +25,7 @@
         {{-- <img src="{{asset('icons/car.png')}}" alt="Vehicle Logo" class="brand-image img-circle"
             width="125px" height="auto" style="opacity: .8;"> --}}
         <br>
-        <b style="font-size:23px;">SITARA</b>
+        <b style="font-size:23px;">SiTara</b>
         </div>
         <div class="card card-outline card-primary">
             <div class="card-body">
@@ -105,6 +105,8 @@
                 <div class="mt-3">
                     <a href="{{route('login')}}" class="text-center">Already Have an Account ? Go, Login</a>
                 </div>
+                <a href="{{ route('kelas') }}">Keluar</a>
+
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->

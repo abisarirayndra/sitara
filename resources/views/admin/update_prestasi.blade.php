@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SITARA</title>
+  <title>SiTara</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container">
       <a href="{{ route('admin.dashboard') }}" class="navbar-brand">
         {{-- <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-        <span class="brand-text font-weight-bold">SITARA</span>
+        <span class="brand-text font-weight-bold">SiTara</span>
       </a>
       <div class="collapse navbar-collapse order-3" id="navbarCollapse">
         <!-- Left navbar links -->
@@ -234,7 +234,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{ $user }}</a>
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
+                <img src="{{ asset('logo/Pak Yayan.png') }}" alt="" width="30" class="img-profile rounded-circle"> {{ $user }}</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="{{ route('logout') }}" class="dropdown-item">Logout </a></li>
             </ul>
@@ -250,8 +251,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content-header">
       <div class="container">
         <div class="row mb-2">
-          <div class="col-sm-12">
-            <h1 class="m-0"> Sistem Pencatatan Prestasi <br> SMAN 2 TARUNA BHAYANGKARA <small>v1.0</small></h1>
+            <div class="col-lg-1">
+                <img src="{{ asset('logo/logo.png') }}" alt="Logo Smada" width="80%">
+            </div>
+          <div class="col-lg-10">
+            <h1 class="m-0"> Sistem Informasi Prestasi <br> SMAN 2 TARUNA BHAYANGKARA <small>v1.0</small></h1>
           </div><!-- /.col -->
           {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -499,7 +503,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2021 Yayan Ferdiyan, M.Pd. </strong> All rights reserved.
+    <strong>Copyright &copy; 2022 Yayan Ferdiyan, M.Pd. </strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

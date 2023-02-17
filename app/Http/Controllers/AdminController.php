@@ -17,7 +17,7 @@ class AdminController extends Controller
         $piagam = Lampiran::where('jenis', "Piagam")->get();
         $foto = Lampiran::where('jenis', "Foto")->get();
         $video = Lampiran::where('jenis', "Video")->get();
-        $prestasi = Prestasi::orderBy('tingkat', 'asc')->orderBy('juara', 'asc')->get();
+        $prestasi = Prestasi::orderBy('tingkat', 'asc')->orderBy('juara', 'asc')->orderBy('tanggal', 'desc')->get();
 
         return view('admin.dashboard', compact('user','prestasi','piagam','foto','video'));
     }
