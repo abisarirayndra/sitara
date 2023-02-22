@@ -435,7 +435,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -451,7 +451,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <img src="{{ asset('files/'. $item->file) }}" width="100%" frameborder="0" scrolling="auto">
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -467,7 +467,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -479,7 +479,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                         </div>
                         @endforeach
-
                     </div>
 
             </div>

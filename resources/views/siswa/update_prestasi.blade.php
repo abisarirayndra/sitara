@@ -379,7 +379,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -395,7 +395,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <img src="{{ asset('files/'. $item->file) }}" width="100%" frameborder="0" scrolling="auto">
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -411,13 +411,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
                                 </div>
                                 <div class="text-center">
-                                    <a href="{{ route('hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
+                                    <a href="{{ route('admin.hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
                                 </div>
                               </div>
                             </div>

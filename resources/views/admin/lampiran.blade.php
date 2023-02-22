@@ -290,10 +290,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                     <div class="filter-container p-0 row">
                         @foreach ($piagam as $item)
-                        <div class="filtr-item col-lg-6  data-category="1">
+                        <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -306,10 +306,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         @endforeach
                         @foreach ($foto as $item)
-                        <div class="filtr-item col-lg-6 data-category="2">
+                        <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto" ></iframe>
+                                <img src="{{ asset('files/'. $item->file) }}" width="100%" frameborder="0" scrolling="auto">
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -322,10 +322,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         @endforeach
                         @foreach ($video as $item)
-                        <div class="filtr-item col-lg-6 data-category="3">
+                        <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -337,7 +337,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                         </div>
                         @endforeach
-
                     </div>
 
             </div>

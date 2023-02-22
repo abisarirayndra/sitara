@@ -336,10 +336,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <h6>File Lampiran</h6>
                     <div class="row">
                         @foreach ($piagam as $item)
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -352,10 +352,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         @endforeach
                         @foreach ($foto as $item)
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <img src="{{ asset('files/'. $item->file) }}" width="100%" frameborder="0" scrolling="auto">
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
@@ -368,10 +368,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         @endforeach
                         @foreach ($video as $item)
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" height="120" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>

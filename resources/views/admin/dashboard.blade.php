@@ -214,41 +214,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="card-body">
                         <div class="filter-container p-0 row">
                             @foreach ($piagam as $item)
-                            <div class="filtr-item col-lg-6  data-category="1">
+                            <div class="col-lg-4">
                                 <div class="card">
-                                  <div class="card-body">
-                                    <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <div class="card-body">
+                                    <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                     <div class="text-center">
                                         <p>{{ $item->file }}</p>
                                         <p>{{ $item->jenis }}</p>
                                     </div>
-                                  </div>
+                                    <div class="text-center">
+                                        <a href="{{ route('hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             @endforeach
                             @foreach ($foto as $item)
-                            <div class="filtr-item col-lg-6 data-category="2">
+                            <div class="col-lg-4">
                                 <div class="card">
-                                  <div class="card-body">
-                                    <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto" ></iframe>
+                                <div class="card-body">
+                                    <img src="{{ asset('files/'. $item->file) }}" width="100%" frameborder="0" scrolling="auto">
                                     <div class="text-center">
                                         <p>{{ $item->file }}</p>
                                         <p>{{ $item->jenis }}</p>
                                     </div>
-                                  </div>
+                                    <div class="text-center">
+                                        <a href="{{ route('hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             @endforeach
                             @foreach ($video as $item)
-                            <div class="filtr-item col-lg-6 data-category="3">
+                            <div class="col-lg-4">
                                 <div class="card">
-                                  <div class="card-body">
-                                    <iframe src="{{ asset('files/'. $item->file) }}" height="200" width="100%" frameborder="0" scrolling="auto"></iframe>
+                                <div class="card-body">
+                                    <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
                                     <div class="text-center">
                                         <p>{{ $item->file }}</p>
                                         <p>{{ $item->jenis }}</p>
                                     </div>
-                                  </div>
+                                    <div class="text-center">
+                                        <a href="{{ route('admin.hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                             @endforeach
