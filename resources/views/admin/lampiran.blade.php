@@ -39,9 +39,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ route('admin.kelas') }}" class="nav-link">Prestasi</a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.kelas') }}" class="nav-link">Lampiran</a>
-          </li>
-          <li class="nav-item">
             <a href="{{ route('admin.lampiran_prestasi') }}" class="nav-link">Lampiran</a>
           </li>
           {{-- <li class="nav-item dropdown">
@@ -325,7 +322,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
+                                <div class="text-center">
+                                    <video src="{{ asset('files/'. $item->file) }}" autoplay="false" width="200" height="200" loop="false"></video>
+                                </div>
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>

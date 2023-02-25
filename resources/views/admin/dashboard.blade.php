@@ -161,6 +161,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <thead>
                     <tr>
                         <th>No</th>
+                        <th>Nama</th>
                       <th>Jenis</th>
                       <th>Tingkat</th>
                       <th>Juara</th>
@@ -178,6 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         @foreach ($prestasi as $item)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td>{{ $item->nama }}</td>
                             <td>{{ $item->jenis }}</td>
                             @if ($item->tingkat == 1)
                             <td>Nasional {{ $item->wilayah }}</td>
@@ -249,7 +251,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-lg-4">
                                 <div class="card">
                                 <div class="card-body">
-                                    <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
+                                    <div class="text-center">
+                                        <video src="{{ asset('files/'. $item->file) }}" autoplay="false" width="200" height="200" loop="false"></video>
+                                    </div>
                                     <div class="text-center">
                                         <p>{{ $item->file }}</p>
                                         <p>{{ $item->jenis }}</p>
