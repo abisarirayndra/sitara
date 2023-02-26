@@ -208,69 +208,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </div>
 
             <!-- /.row -->
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Lampiran File Prestasi</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                        <div class="filter-container p-0 row">
-                            @foreach ($piagam as $item)
-                            <div class="col-lg-4">
-                                <div class="card">
-                                <div class="card-body">
-                                    <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0" scrolling="auto"></iframe>
-                                    <div class="text-center">
-                                        <p>{{ $item->file }}</p>
-                                        <p>{{ $item->jenis }}</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <a href="{{ route('hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @foreach ($foto as $item)
-                            <div class="col-lg-4">
-                                <div class="card">
-                                <div class="card-body">
-                                    <img src="{{ asset('files/'. $item->file) }}" width="100%" frameborder="0" scrolling="auto">
-                                    <div class="text-center">
-                                        <p>{{ $item->file }}</p>
-                                        <p>{{ $item->jenis }}</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <a href="{{ route('hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @foreach ($video as $item)
-                            <div class="col-lg-4">
-                                <div class="card">
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <video src="{{ asset('files/'. $item->file) }}" autoplay="false" width="200" height="200" loop="false"></video>
-                                    </div>
-                                    <div class="text-center">
-                                        <p>{{ $item->file }}</p>
-                                        <p>{{ $item->jenis }}</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <a href="{{ route('admin.hapus_file', [$item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin ingin menghapus file ini ?')"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                            @endforeach
-
-                        </div>
-
-                </div>
-                <!-- /.card-body -->
-              </div>
+            
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
