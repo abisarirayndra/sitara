@@ -290,7 +290,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-lg-4">
                             <div class="card">
                               <div class="card-body">
-                                <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0"></iframe>
+                                {{-- <iframe src="{{ asset('files/'. $item->file) }}" frameborder="0"></iframe> --}}
                                 <div class="text-center">
                                     <p>{{ $item->file }}</p>
                                     <p>{{ $item->jenis }}</p>
